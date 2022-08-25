@@ -124,6 +124,7 @@ function onLoadMoreClick() {
 }
 
 function clearRequestedInfo() {
+  refs.loadBtnContainerEl.classList.add('visually-hidden');
   refs.galleryBlockEl.innerHTML = '';
 }
 

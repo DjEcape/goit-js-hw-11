@@ -106,6 +106,7 @@ function renderCards(arrayOfObjects) {
       }
     )
     .join('');
+    lightbox.refresh();
   refs.galleryBlockEl.insertAdjacentHTML('beforeend', markup);
   refs.loadBtnContainerEl.classList.remove('visually-hidden');
 }
@@ -113,6 +114,7 @@ function renderCards(arrayOfObjects) {
 function onLoadMoreClick() {
   pixabayApi.fetchCards().then(array => {
     renderCards(array);
+    lightbox.refresh();
     this.perPage += array.length;
     lightbox.refresh();
     if (this.perPage === pixabayApi.totalHits) {

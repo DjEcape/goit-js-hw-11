@@ -50,6 +50,7 @@ function onFormSubmit(e) {
     }
 
     renderCards(array);
+    lightbox.refresh();
     if (pixabayApi.page === 2) {
       Notiflix.Notify.success(
         `✅ Hooray! We found ${pixabayApi.totalHits} images.`
@@ -67,6 +68,7 @@ function onFormSubmit(e) {
 
 
 function renderCards(arrayOfObjects) {
+
   const markup = arrayOfObjects
     .map(
       ({
@@ -111,15 +113,15 @@ function renderCards(arrayOfObjects) {
 function onLoadMoreClick() {
   pixabayApi.fetchCards().then(array => {
     renderCards(array);
-
     this.perPage += array.length;
+    lightbox.refresh();
     if (this.perPage === pixabayApi.totalHits) {
       refs.loadBtnContainerEl.classList.add('visually-hidden');
       Notiflix.Notify.info(
         "❌ We're sorry, but you've reached the end of search results."
       );
     }
-    lightbox.refresh();
+ 
   });
 }
 

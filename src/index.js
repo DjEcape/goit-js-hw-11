@@ -68,7 +68,7 @@ function onFormSubmit(e) {
 
 
 function renderCards(arrayOfObjects) {
-
+  lightbox.refresh();
   const markup = arrayOfObjects
     .map(
       ({
